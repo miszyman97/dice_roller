@@ -33,7 +33,31 @@ def user_input():
             print('Invalid input.')
             continue
 
-        
+        try:
+            # Number of dice to roll
+            number = input_str.split('d')[0]
+            if number == '':
+                number = 1
+            else:
+                number =int(number)
+
+            # Dodifier
+            if '+' in input_str:
+                modifier = int(input_str.split('+')[-1])
+            elif '-' in input_str:
+                modifier = int(input_str.split('-')[-1])
+            else:
+                modifier = 0
+
+            # Dice size
+            dice_size = int(input_str.replace('d', ' ').replace('+', ' ').replace('-', ' ').split(' ')[1])
+            if dice_size in [3, 4, 6, 8, 10, 12, 20, 100]:
+                return number, dice_size, modifier
+            else:
+                print('Invalid dice size.')
+
+        except ValueError:
+            print('Invalid input.')
 
 
 

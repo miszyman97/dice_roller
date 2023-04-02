@@ -39,7 +39,7 @@ def user_input():
             if number == '':
                 number = 1
             else:
-                number =int(number)
+                number = int(number)
 
             # Dodifier
             if '+' in input_str:
@@ -60,8 +60,19 @@ def user_input():
             print('Invalid input.')
 
 
+def roll_the_dice():
+    """
+    Calls external function get_player_input to generate input data: number (int) -
+    number of dice, dice_size (int) - size of the dice, modifier (int) - result modifier.
+
+    Returns the sum of all dice rolls modified by modifier value.
+    :return: int - sum of all rolls modified by modifier value
+    """
+    number, dice_size, modifier = user_input()
+
+    roll = (dice_roll(dice_size) for _ in range(number))
+    result = sum(roll) + modifier
+    return result
 
 
-
-
-user_input()
+print(roll_the_dice())
